@@ -1,0 +1,11 @@
+VoidBoot by hukka/void
+
+Genre: Amiga intro (1K)
+Platform: Amiga OCS/ECS/AGA
+
+Info: My first attempt at a simple bootblock intro (1024 bytes). Greets to exec!
+
+To orgs: ADF contains the bootblock both as an actual bootblock and as a
+separate executable "voidboot.exe" (somewhat larger due to additional init/exit
+code), should also be runnable from Workbench. Quits via left mouse click only
+due to size constraints.
