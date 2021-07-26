@@ -1,0 +1,42 @@
+mode = ( writing, fading, waiting )
+
+TextWriter:
+
+case mode of
+
+	waiting:
+		dec counter
+		if counter = 0, inc mode
+		rts
+		
+	writing:
+		get next char
+		advance xy
+		blit char to offscreen buffer
+		if screen done, inc mode
+		rts
+	
+	fading:
+		inc counter
+		
+		if all scanlines done, reset mode := waiting	
+		rts
+	
+end
+
+
+src:    0101010101
+dest:   XXXXXXXXXX
+mask:   0001110011
+result: 010XXX01XX <- 0,1 taken from src, X bits from dest
+
+
+
+
+unsigned int a;    // value to merge in non-masked bits
+unsigned int b;    // value to merge in masked bits
+unsigned int mask; // 1 where bits from b should be selected; 0 where from a.
+unsigned int r;    // result of (a & ~mask) | (b & mask) goes here
+
+r = a ^ ((a ^ b) & mask); 
+
